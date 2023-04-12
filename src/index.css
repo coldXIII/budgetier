@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Toastify__toast--success {
+  background: #232323 !important;
+  color: rgb(228, 70, 70);
+}
+.toastProgress {
+  background: gold !important;
+}
+.Toastify__toast-icon {
+    color: gold !important;
+}
