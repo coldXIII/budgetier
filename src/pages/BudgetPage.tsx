@@ -2,14 +2,11 @@ import { toast } from 'react-toastify';
 import AddExpensesForm from '../components/AddExpensesForm';
 import BudgetItem from '../components/BudgetItem';
 import Table from '../components/Table';
-import { Budget, Expense } from '../types';
-import { createExpense, deleteItem, getAllMatchingItems } from '../helpers';
+import { BudgetData } from '../types';
+import { deleteItem, getAllMatchingItems } from '../helpers';
+import { createExpense } from '../actions/createExpense';
 import { useLoaderData } from 'react-router-dom';
 
-type BudgetData = {
-  budget: Budget;
-  expenses: Expense[];
-};
 
 export async function budgetLoader({ params }: any) {
   const budget = await getAllMatchingItems({

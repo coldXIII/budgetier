@@ -1,6 +1,6 @@
 import { Expense, MatchingItems } from "./types";
 
-const generateRandomColor = (): string => {
+export const generateRandomColor = (): string => {
   return Math.floor(Math.random() * 16777215).toString(16);
 };
 
@@ -27,49 +27,49 @@ export const deleteItem = ({ key, id }: { key: string; id?: string }) => {
   return localStorage.removeItem(key);
 };
 
-export const createBudget = ({
-  name,
-  amount,
-}: {
-  name: string;
-  amount: string;
-}) => {
-  const newItem = {
-    id: crypto.randomUUID(),
-    name: name,
-    createdAt: Date.now(),
-    amount: +amount,
-    color: generateRandomColor(),
-  };
-  const exisitingBudgets = fetchData('budgets') ?? [];
-  return localStorage.setItem(
-    'budgets',
-    JSON.stringify([...exisitingBudgets, newItem])
-  );
-};
+// export const createBudget = ({
+//   name,
+//   amount,
+// }: {
+//   name: string;
+//   amount: string;
+// }) => {
+//   const newItem = {
+//     id: crypto.randomUUID(),
+//     name: name,
+//     createdAt: Date.now(),
+//     amount: +amount,
+//     color: generateRandomColor(),
+//   };
+//   const exisitingBudgets = fetchData('budgets') ?? [];
+//   return localStorage.setItem(
+//     'budgets',
+//     JSON.stringify([...exisitingBudgets, newItem])
+//   );
+// };
 
-export const createExpense = ({
-  name,
-  amount,
-  budgetId,
-}: {
-  name: string;
-  amount: string;
-  budgetId: string;
-}) => {
-  const newItem = {
-    id: crypto.randomUUID(),
-    name: name,
-    createdAt: Date.now(),
-    amount: +amount,
-    budgetId: budgetId,
-  };
-  const exisitingExpenses = fetchData('expenses') ?? [];
-  return localStorage.setItem(
-    'expenses',
-    JSON.stringify([...exisitingExpenses, newItem])
-  );
-};
+// export const createExpense = ({
+//   name,
+//   amount,
+//   budgetId,
+// }: {
+//   name: string;
+//   amount: string;
+//   budgetId: string;
+// }) => {
+//   const newItem = {
+//     id: crypto.randomUUID(),
+//     name: name,
+//     createdAt: Date.now(),
+//     amount: +amount,
+//     budgetId: budgetId,
+//   };
+//   const exisitingExpenses = fetchData('expenses') ?? [];
+//   return localStorage.setItem(
+//     'expenses',
+//     JSON.stringify([...exisitingExpenses, newItem])
+//   );
+// };
 
 export const calculateSpentByBudget = (budgetId: string) => {
   const expenses = fetchData('expenses') ?? [];

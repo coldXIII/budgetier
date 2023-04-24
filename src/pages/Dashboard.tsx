@@ -1,20 +1,16 @@
-import { Expense, Budget } from '../types';
-import { createBudget, createExpense, deleteItem, fetchData } from '../helpers';
+import { Expense, Budget, User } from '../types';
+import { deleteItem, fetchData } from '../helpers';
+import { createBudget } from '../actions/createBudget';
+import { createExpense } from '../actions/createExpense';
 import { useLoaderData } from 'react-router-dom';
-import Intro from '../components/Intro';
 import { toast } from 'react-toastify';
+import Intro from '../components/Intro';
 import AddBudgetForm from '../components/AddBudgetForm';
 import AddExpensesForm from '../components/AddExpensesForm';
 import BudgetItem from '../components/BudgetItem';
 import Table from '../components/Table';
 import { Link } from 'react-router-dom';
 import { ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
-
-type User = {
-  userName: string;
-  budgets: Budget[];
-  expenses: Expense[];
-};
 
 export function dashboardLoader() {
   const userName: string = fetchData('userName');
@@ -78,7 +74,7 @@ const Dashboard = () => {
   const sortedExpenses =
     expenses &&
     expenses.sort((a, b) => +b.createdAt - +a.createdAt).slice(0, 8);
-  console.log(budgets);
+
   return (
     <>
       {userName ? (

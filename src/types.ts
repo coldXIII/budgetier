@@ -3,7 +3,7 @@ export type Budget = {
   name: string;
   amount: string;
   createdAt: string;
-  color:string
+  color: string;
 };
 
 export type Expense = {
@@ -18,4 +18,15 @@ export type MatchingItems = {
   key: string;
   category: string;
   value: string;
+};
+
+export type User = {
+  userName: string;
+  budgets: Budget[];
+  expenses: Expense[];
+};
+
+export type BudgetData = {
+  budget: Budget;
+  expenses: Expense[];
 };
